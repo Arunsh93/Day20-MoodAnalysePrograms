@@ -15,7 +15,7 @@ namespace MoodAnalyserProgram
         {
 
         }
-        public string AnalyseMood(string mood)
+        public string AnalyseMood()
         {
             if (mood.ToLower().Contains("sad"))
             {

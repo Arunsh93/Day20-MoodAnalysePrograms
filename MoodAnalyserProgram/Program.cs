@@ -10,7 +10,7 @@ namespace MoodAnalyserProgram
             Console.Write("Enter a Message to test Mood: ");
             string mood = Console.ReadLine();
             MoodAnalyser moodAnalyser = new MoodAnalyser();
-            string message = moodAnalyser.AnalyseMood(mood);
+            string message = moodAnalyser.AnalyseMood();
             Console.WriteLine(message);
         }
     }
