@@ -17,13 +17,24 @@ namespace MoodAnalyserProgram
         }
         public string AnalyseMood()
         {
-            if (mood.ToLower().Contains("sad"))
+            try
             {
-                return "SAD";
+                if(this.mood.Equals(string.Empty))
+                {
+                    throw new NullReferenceException();
+                }
+                if (mood.ToLower().Contains("sad"))
+                {
+                    return "SAD";
+                }
+                else
+                {
+                    return "HAPPY";
+                }
             }
-            else
+            catch(NullReferenceException ex)
             {
-                return "HAPPY";
+                return ex.Message;
             }
         }
     }
