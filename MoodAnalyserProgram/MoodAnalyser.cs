@@ -4,8 +4,17 @@ using System.Text;
 
 namespace MoodAnalyserProgram
 {
-    class MoodAnalyser
+    public class MoodAnalyser
     {
+        private string mood;
+        public MoodAnalyser(string mood)
+        {
+            this.mood = mood;
+        }
+        public MoodAnalyser()
+        {
+
+        }
         public string AnalyseMood(string mood)
         {
             if (mood.ToLower().Contains("sad"))
