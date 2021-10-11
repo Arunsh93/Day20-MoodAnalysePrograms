@@ -8,7 +8,7 @@ namespace MSTestForMoodAnalyser
         [TestMethod]
         public void GetMoodReturnMessage()
         {
-            MoodAnalyserProgram.MoodAnalyser moodAnalyser = new MoodAnalyserProgram.MoodAnalyser();
+            MoodAnalyserProgram.MoodAnalyser moodAnalyser = new MoodAnalyserProgram.MoodAnalyser("Iam in Happy Mood");
 
             //Arrange
             string sadMood = "Iam in Sad Mood";
@@ -17,7 +17,7 @@ namespace MSTestForMoodAnalyser
             string actualOuput;
 
             //Action
-            actualOuput = moodAnalyser.AnalyseMood(happyMood);
+            actualOuput = moodAnalyser.AnalyseMood();
 
             //Assert
             Assert.AreEqual(expectedOutput, actualOuput);
