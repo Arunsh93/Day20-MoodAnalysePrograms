@@ -11,19 +11,15 @@ namespace MoodAnalyserProgram
         {
             this.mood = mood;
         }
-        public MoodAnalyser()
-        {
-
-        }
         public string AnalyseMood()
         {
             try
             {
-                if(this.mood.Equals(string.Empty))
+                if (this.mood.Equals(string.Empty))
                 {
-                    throw new NullReferenceException();
+                    throw new MoodAnalysisCustomException(MoodAnalysisCustomException.ExceptionType.EMPTY_MESSAGE, "Message Should not be Empty");
                 }
-                if (mood.ToLower().Contains("sad"))
+                if (this.mood.ToLower().Contains("sad"))
                 {
                     return "SAD";
                 }
@@ -32,9 +28,9 @@ namespace MoodAnalyserProgram
                     return "HAPPY";
                 }
             }
-            catch(NullReferenceException ex)
+            catch(NullReferenceException)
             {
-                return ex.Message;
+                throw new MoodAnalysisCustomException(MoodAnalysisCustomException.ExceptionType.NULL_MESSAGE, "Message Should not be Null");
             }
         }
     }
