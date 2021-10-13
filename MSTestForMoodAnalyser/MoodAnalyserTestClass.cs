@@ -105,5 +105,59 @@ namespace MSTestForMoodAnalyser
                 Assert.AreEqual("Constructor Not Found", ex.Message);
             }
         }
+
+        //TC-5.1
+        [TestMethod]
+        public void GivenMoodAnalyser_ReturnParameterizedConstroctor()
+        {
+            string className = "MoodAnalyserProgram.MoodAnalyser";
+            string constructorName = "MoodAnalyser";
+            object Expected = new MoodAnalyser("HAPPY");
+            object Actual = MoodAnalyserFactory.CreateMoodAnalyserUsingParameter(className, constructorName, "Happy");
+            Expected.Equals(Actual);
+        }
+
+        //TC-5.2
+        [TestMethod]
+        public void GivenMoodAnalyser_ReturnNoSuchClass_UsingParametrizedConstroctor()
+        {
+            string Expected = "Class Not Found";
+            try
+            {
+                //Arrange
+                string className = "MoodAnalyserProgram.MoodAnalyser1";
+                string constructorName = "MoodAnalyser1";
+                
+
+                //Action
+                object Actual = MoodAnalyserFactory.CreateMoodAnalyserUsingParameter(className, constructorName, Expected);
+            }
+            catch (MoodAnalysisCustomException ex)
+            {
+                //Assert
+                Assert.AreEqual("Class Not Found", ex.Message);
+            }
+        }
+        //TC-5.3
+        [TestMethod]
+        public void GivenMoodAnalyser_ReturnNoSuchMethod_UsingParametrizedConstroctor()
+        {
+            string Expected = "Constructor Not Found";
+            try
+            {
+                //Arrange
+                string className = "MoodAnalyserProgram.MoodAnalyser";
+                string constructorName = "MoodAnalyser1";
+
+
+                //Action
+                object Actual = MoodAnalyserFactory.CreateMoodAnalyserUsingParameter(className, constructorName, Expected);
+            }
+            catch (MoodAnalysisCustomException ex)
+            {
+                //Assert
+                Assert.AreEqual("Constructor Not Found", ex.Message);
+            }
+        }
     }
 }
