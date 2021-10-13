@@ -7,6 +7,10 @@ namespace MoodAnalyserProgram
     public class MoodAnalyser
     {
         private string mood;
+        public MoodAnalyser()
+        {
+
+        }
         public MoodAnalyser(string mood)
         {
             this.mood = mood;
