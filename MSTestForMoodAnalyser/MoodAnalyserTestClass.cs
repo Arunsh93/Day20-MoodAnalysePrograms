@@ -159,5 +159,38 @@ namespace MSTestForMoodAnalyser
                 Assert.AreEqual("Constructor Not Found", ex.Message);
             }
         }
+        //TC-6.1
+        [TestMethod]
+        public void GivenMoodAnalyser_ForInvokeMethod()
+        {
+
+            //Arrange
+            string Expected = "Happy";
+
+            //Action
+            object Actual = MoodAnalyserFactory.CreateMoodAnalyserForInvokeMethod(Expected, "AnalyseMood");
+
+            //Assert
+            Expected.Equals(Actual);           
+        }
+        //TC-6.2
+        [TestMethod]
+        public void GivenMoodAnalyser_ForInvokeMethod_ReturnNoSuchMethod()
+        {
+            string Expected = "No Such Method Found";
+            try
+            {
+                //Arrange
+                string methodName = "AnalyserMood";
+
+                //Action
+                object Actual = MoodAnalyserFactory.CreateMoodAnalyserForInvokeMethod("Sad", methodName);
+            }
+            catch(MoodAnalysisCustomException ex)
+            {
+                //Assert
+                Assert.AreEqual(Expected, ex.Message);
+            }
+        }
     }
 }
